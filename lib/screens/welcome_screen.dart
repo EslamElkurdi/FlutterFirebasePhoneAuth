@@ -1,3 +1,4 @@
+import 'package:firebaseproject/screens/register_screen.dart';
 import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: 50,
                   child: CustomButton(
                       text: "Get Started",
-                      onPressed: (){}
+                      onPressed: ()
+                      {
+                        Navigator.push(
+                            context,
+                             MaterialPageRoute(
+                                builder: (context)=> const RegisterScreen()
+                            )
+                        );
+                      }
                   ),
                 )
               ],
