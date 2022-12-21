@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 
 class UserInformationScreen  extends StatefulWidget {
@@ -84,6 +85,15 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
 
 
                     ],
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 60.0,
+                  child: CustomButton(
+                    text: "Continue",
+                    onPressed: (){},
                   ),
                 )
               ],
