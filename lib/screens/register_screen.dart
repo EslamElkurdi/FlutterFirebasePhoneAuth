@@ -175,5 +175,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     String phoneNumber = phoneController.text.trim();
+    ap.signInWithPhone(context, "+${country.phoneCode}$phoneNumber");
   }
 }
