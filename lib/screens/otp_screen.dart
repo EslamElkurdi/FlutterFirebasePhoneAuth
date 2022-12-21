@@ -20,6 +20,13 @@ class _OTPScreenState extends State<OTPScreen> {
                         vertical: 25, horizontal: 35),
                     child: SingleChildScrollView(
                         child: Column(children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context).pop(),
+                              child: const Icon(Icons.arrow_back),
+                            ),
+                          ),
                       Container(
                         width: 200.0,
                         height: 200.0,
@@ -33,7 +40,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         height: 10,
                       ),
                       const Text(
-                        "Register",
+                        "Verification",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -43,7 +50,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         height: 10,
                       ),
                       const Text(
-                        "Add your phone number. We`ll send you a verification code",
+                        "Enter the OTP send to your phone number",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black38,
