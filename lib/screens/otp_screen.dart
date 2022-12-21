@@ -1,7 +1,10 @@
+import 'package:firebaseproject/provider/auth_provider.dart';
+import 'package:firebaseproject/screens/user_information.dart';
 import 'package:firebaseproject/utils/utiles.dart';
 import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 
 class OTPScreen extends StatefulWidget {
   final String verificationId;
@@ -17,9 +20,13 @@ class _OTPScreenState extends State<OTPScreen> {
   String? otpCode;
   @override
   Widget build(BuildContext context) {
+    final isLoading = Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
         body: SafeArea(
-            child: Padding(
+            child: isLoading == true
+                ? const Center(
+              child: CircularProgressIndicator(color: Colors.purple),)
+                : Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 25, horizontal: 35),
                 child: SingleChildScrollView(
@@ -128,6 +135,26 @@ class _OTPScreenState extends State<OTPScreen> {
 
   void verifyOtp(BuildContext context,String userOtp)
   {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+    ap.verifyOtp(
+        context: context,
+        verificationId: widget.verificationId,
+        userOtp: userOtp,
+        onSuccess: ()
+        {
+            ap.checkExistingUser().then((value) async{
+              if(value == true){
 
+              }else{
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context)=> const UserInformationScreen()),
+                        (route) => false
+                );
+              }
+            });
+        }
+    );
   }
 }
