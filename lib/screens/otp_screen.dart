@@ -87,7 +87,7 @@ class _OTPScreenState extends State<OTPScreen> {
                             fontWeight: FontWeight.w600,
                           )
                         ),
-                        onSubmitted: (value)
+                        onCompleted: (value)
                         {
                           setState(() {
                             otpCode = value;

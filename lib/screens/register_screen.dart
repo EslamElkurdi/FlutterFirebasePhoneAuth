@@ -86,6 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     {
                       setState(() {
                         phoneController.text = value;
+                        onTextChange(value);
                       });
                     },
                     decoration: InputDecoration(
@@ -176,5 +177,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     String phoneNumber = phoneController.text.trim();
     ap.signInWithPhone(context, "+${country.phoneCode}$phoneNumber");
+  }
+
+
+  void onTextChange(String txt) {
+    phoneController.text = txt;
+    phoneController.selection = TextSelection.fromPosition(
+      TextPosition(offset: phoneController.text.length),
+    );
   }
 }
