@@ -52,6 +52,18 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                     backgroundImage: FileImage(image!),
                     radius: 50,
                   ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                  margin: const EdgeInsets.only(top: 20),
+                  child: Column(
+                    children: [
+
+
+                    ],
+                  ),
                 )
               ],
             ),
@@ -60,4 +72,20 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
       ),
     );
   }
+
+  Widget textFeild({
+  required String hintText,
+    required IconData icon,
+    required TextInputType inputType,
+    required int maxLines,
+    required TextEditingController controller,
+}){
+    return Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+
+      ),
+    );
+  }
+
 }
