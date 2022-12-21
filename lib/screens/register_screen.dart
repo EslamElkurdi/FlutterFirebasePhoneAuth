@@ -74,6 +74,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 TextFormField(
                   cursorColor: Colors.purple,
                   controller: phoneController,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  ),
                   onChanged: (value)
                   {
                     setState(() {
@@ -82,6 +86,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   decoration: InputDecoration(
                     hintText: "Enter phone number",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                      color: Colors.grey.shade600
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(color: Colors.black12),
@@ -125,6 +134,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ? Container(
                       height: 30,
                       width: 30,
+                      margin: const EdgeInsets.all(10.0),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.green
