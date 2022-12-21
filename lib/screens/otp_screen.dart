@@ -103,6 +103,15 @@ class _OTPScreenState extends State<OTPScreen> {
                           fontWeight: FontWeight.bold,
                           color: Colors.black38
                         ),
+                      ),
+                      const SizedBox(height: 10,),
+                      const Text(
+                        "Resend New Code",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple
+                        ),
                       )
                 ])))));
   }
