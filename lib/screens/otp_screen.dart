@@ -1,3 +1,4 @@
+import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -11,6 +12,8 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+
+  String? otpCode;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +73,37 @@ class _OTPScreenState extends State<OTPScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.purple.shade200)
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
                           )
                         ),
+                        onSubmitted: (value)
+                        {
+                          setState(() {
+                            otpCode = value;
+                          });
+                        },
                       ),
+                      const SizedBox(height: 25,),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        child: CustomButton(
+                            text: "Verify",
+                            onPressed: (){}
+                        ),
+                      ),
+                      const SizedBox(height: 20,),
+                      const Text(
+                        "Didn't receive any code?",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black38
+                        ),
+                      )
                 ])))));
   }
 }
