@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -8,7 +11,19 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
+  final TextEditingController phoneController = TextEditingController();
+  Country country = Country(
+      phoneCode: "20",
+      countryCode: "EG",
+      e164Sc: 0,
+      geographic: true,
+      level: 1,
+      name: "Egypt",
+      example: "Egypt",
+      displayName: "Egypt",
+      displayNameNoCountryCode: "EG",
+      e164Key: ""
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +68,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20,),
+                TextFormField(
+                  cursorColor: Colors.purple,
+                  controller: phoneController,
+                  decoration: InputDecoration(
+                    hintText: "Enter phone number",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                    prefixIcon: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: ()
+                        {
 
+                        },
+                        child: Text(
+                          "${country.flagEmoji} + ${country.phoneCode}",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
+                    )
+
+                  ),
+                )
               ],
             ),
           ),
