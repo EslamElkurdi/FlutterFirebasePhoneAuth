@@ -28,7 +28,9 @@ class AuthProvider extends ChangeNotifier{
  {
    try{
      await _firebaseAuth.verifyPhoneNumber(
-         verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async
+       phoneNumber: phoneNumber,
+         verificationCompleted:
+             (PhoneAuthCredential phoneAuthCredential) async
          {
            await _firebaseAuth.signInWithCredential(phoneAuthCredential);
          },
