@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
-  
+
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -108,7 +108,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    suffixIcon: phoneController.text.length > 9
+                        ? Container(
+                      height: 30,
+                      width: 30,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.green
+                      ),
+                      child: const Icon(
+                        Icons.done,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     )
+                        : null
 
                   ),
                 )
