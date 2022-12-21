@@ -28,6 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -72,12 +73,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 TextFormField(
                   cursorColor: Colors.purple,
                   controller: phoneController,
+                  onChanged: (value)
+                  {
+                    setState(() {
+                      phoneController.text = value;
+                    });
+                  },
                   decoration: InputDecoration(
                     hintText: "Enter phone number",
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(color: Colors.black12),
                     ),
+
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(color: Colors.black12),
@@ -94,7 +102,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               onSelect: (value)
                               {
-                                country = value;
+
+                                setState(() {
+                                  country = value;
+                                });
                               }
                           );
 
@@ -109,7 +120,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                    suffixIcon: phoneController.text.length > 9
+                    suffixIcon: phoneController.text.length > 10
                         ? Container(
                       height: 30,
                       width: 30,
