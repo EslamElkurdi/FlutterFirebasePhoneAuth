@@ -60,6 +60,27 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                   margin: const EdgeInsets.only(top: 20),
                   child: Column(
                     children: [
+                      textFeild(
+                          hintText: "Eslam Gamal",
+                          icon: Icons.account_circle,
+                          inputType: TextInputType.name,
+                          maxLines: 1,
+                          controller: nameController
+                      ),
+                      textFeild(
+                          hintText: "abc@example.com",
+                          icon: Icons.email,
+                          inputType: TextInputType.emailAddress,
+                          maxLines: 1,
+                          controller: emailController
+                      ),
+                      textFeild(
+                          hintText: "Enter your bio here...",
+                          icon: Icons.edit,
+                          inputType: TextInputType.name,
+                          maxLines: 2,
+                          controller: nameController
+                      ),
 
 
                     ],
@@ -83,7 +104,39 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     return Padding(
         padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
-
+          cursorColor: Colors.purple,
+        controller: controller,
+        keyboardType: inputType,
+        maxLines: maxLines,
+        decoration: InputDecoration(
+          prefixIcon: Container(
+            margin: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.purple
+            ),
+            child: Icon(
+              icon,
+              size: 20,
+              color: Colors.white,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: Colors.transparent
+            )
+          ),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: Colors.transparent
+                )
+            ),
+          hintText: hintText,
+          alignLabelWithHint: true,
+          border: InputBorder.none,
+          fillColor: Colors.purple.shade50,
+          filled: true
+        ),
       ),
     );
   }
