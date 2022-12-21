@@ -1,3 +1,4 @@
+import 'package:firebaseproject/utils/utiles.dart';
 import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -92,7 +93,16 @@ class _OTPScreenState extends State<OTPScreen> {
                         height: 50,
                         child: CustomButton(
                             text: "Verify",
-                            onPressed: (){}
+                            onPressed: ()
+                            {
+                              if(otpCode != null)
+                              {
+                                verifyOtp(context, otpCode!);
+
+                              }else{
+                                showSnackBar(context, "Enter 6-Digit code");
+                              }
+                            }
                         ),
                       ),
                       const SizedBox(height: 20,),
@@ -114,5 +124,10 @@ class _OTPScreenState extends State<OTPScreen> {
                         ),
                       )
                 ])))));
+  }
+
+  void verifyOtp(BuildContext context,String userOtp)
+  {
+
   }
 }
