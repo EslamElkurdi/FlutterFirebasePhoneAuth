@@ -19,12 +19,12 @@ class AuthProvider extends ChangeNotifier{
 
  bool _isSignedIn = false;
  bool get isSignedIn=> _isSignedIn;
-
  bool _isLoading = false;
  bool get isLoading => _isLoading;
-
  String? _uid;
  String get uid => _uid!;
+ UserModel? _userModel;
+ UserModel get userModel => _userModel!;
  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
  final FirebaseFirestore _firebaseStore = FirebaseFirestore.instance;
  final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
@@ -131,6 +131,18 @@ class AuthProvider extends ChangeNotifier{
        userModel.createdAt = DateTime.now().millisecondsSinceEpoch.toString();
        userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
        userModel.uid = _firebaseAuth.currentUser!.phoneNumber!;
+     });
+     _userModel = userModel;
+
+     // uploading to database
+     await _firebaseStore
+         .collection("users")
+         .doc(_uid)
+         .set(userModel.toMap())
+         .then((value) {
+       onSuccess();
+       _isLoading = false;
+       notifyListeners();
      });
    } on FirebaseAuthException catch (e){
      showSnackBar(context, e.message.toString());
