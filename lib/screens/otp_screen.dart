@@ -1,4 +1,5 @@
 import 'package:firebaseproject/provider/auth_provider.dart';
+import 'package:firebaseproject/screens/home_screen.dart';
 import 'package:firebaseproject/screens/user_information.dart';
 import 'package:firebaseproject/utils/utiles.dart';
 import 'package:firebaseproject/widgets/custome_button.dart';
@@ -144,6 +145,19 @@ class _OTPScreenState extends State<OTPScreen> {
         {
             ap.checkExistingUser().then((value) async{
               if(value == true){
+                // user exists in our app
+                ap.getDataFromFireStore().then(
+                      (value) => ap.saveUserDataToSP().then(
+                        (value) => ap.setSignIn().then(
+                          (value) => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                              (route) => false),
+                    ),
+                  ),
+                );
 
               }else{
                 Navigator.pushAndRemoveUntil(
