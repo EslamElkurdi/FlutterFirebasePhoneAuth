@@ -56,23 +56,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: 50,
                   child: CustomButton(
                       text: "Get Started",
-                      onPressed: ()
+                      onPressed: () async
                       {
-                        ap.isSignedIn == true
-                            ?
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context)=> HomeScreen())
+                        if(ap.isSignedIn == true){
+                          await ap.getDataFromSP().whenComplete(() => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context)=>const HomeScreen())
+                          ));
 
-                        )
-                            :
-                        Navigator.push(
-                            context,
-                             MaterialPageRoute(
-                                builder: (context)=> const RegisterScreen()
-                            )
-                        );
+                        }else{
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context)=> const RegisterScreen()
+                              )
+                          );
+                        }
                       }
                   ),
                 )
