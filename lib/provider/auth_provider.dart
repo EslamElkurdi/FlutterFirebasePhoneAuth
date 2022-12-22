@@ -1,5 +1,6 @@
 
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -157,6 +158,12 @@ class AuthProvider extends ChangeNotifier{
    TaskSnapshot snapshot = await uploadTask;
    String downloadUrl = await snapshot.ref.getDownloadURL();
    return downloadUrl;
+ }
+
+ // STORING DATA LOCALLY
+ Future saveUserDataToSP() async {
+   SharedPreferences s = await SharedPreferences.getInstance();
+   await s.setString("user_model", jsonEncode(userModel.toMap()));
  }
 
 
