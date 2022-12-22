@@ -29,6 +29,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.purple,
+                backgroundImage: NetworkImage(ap.userModel.profilePic),
+                radius: 50,
+              ),
+              const SizedBox(height: 20),
+              Text(ap.userModel.name),
+              Text(ap.userModel.phoneNumber),
+              Text(ap.userModel.email),
+              Text(ap.userModel.bio),
+            ],
+          )),
     );
   }
 }
