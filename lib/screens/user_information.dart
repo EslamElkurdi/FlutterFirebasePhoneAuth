@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../models/user_model.dart';
 import '../utils/utiles.dart';
+import 'home_screen.dart';
 
 class UserInformationScreen  extends StatefulWidget {
   const UserInformationScreen ({Key? key}) : super(key: key);
@@ -189,7 +190,16 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
             profilePic: image!,
             onSuccess: ()
             {
-
+              ap.saveUserDataToSP().then(
+                    (value) => ap.setSignIn().then(
+                      (value) => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                          (route) => false),
+                ),
+              );
             }
         );
     } else {
