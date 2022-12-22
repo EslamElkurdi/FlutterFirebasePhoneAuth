@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 
 import 'package:firebaseproject/screens/otp_screen.dart';
@@ -26,6 +27,7 @@ class AuthProvider extends ChangeNotifier{
  String get uid => _uid!;
  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
  final FirebaseFirestore _firebaseStore = FirebaseFirestore.instance;
+ final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
  AuthProvider()
  {
@@ -130,6 +132,12 @@ class AuthProvider extends ChangeNotifier{
  }
 
 
+ Future<String> storeFileToStorage(String ref, File file) async {
+   UploadTask uploadTask = _firebaseStorage.ref().child(ref).putFile(file);
+   TaskSnapshot snapshot = await uploadTask;
+   String downloadUrl = await snapshot.ref.getDownloadURL();
+   return downloadUrl;
+ }
 
 
 }

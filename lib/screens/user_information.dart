@@ -175,7 +175,12 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
       uid: "",
     );
     if (image != null) {
-
+        ap.saveUserDataToFirebase(
+            context: context,
+            userModel: userModel,
+            profilePic: image!,
+            onSuccess: (){}
+        );
     } else {
       showSnackBar(context, "Please upload your profile photo");
     }
