@@ -95,10 +95,10 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                 const SizedBox(height: 20,),
                 SizedBox(
                   height: 50,
-                  width: MediaQuery.of(context).size.width * 60.0,
+                  width: MediaQuery.of(context).size.width * 90.0,
                   child: CustomButton(
                     text: "Continue",
-                    onPressed: (){},
+                    onPressed: () => storeData(),
                   ),
                 )
               ],
