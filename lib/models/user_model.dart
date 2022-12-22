@@ -29,5 +29,17 @@ class UserModel{
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "email": email,
+      "uid": uid,
+      "bio": bio,
+      "profilePic": profilePic,
+      "phoneNumber": phoneNumber,
+      "createdAt": createdAt,
+    };
+  }
+
 
 }
