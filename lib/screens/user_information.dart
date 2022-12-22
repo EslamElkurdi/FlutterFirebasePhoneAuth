@@ -5,6 +5,9 @@ import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/user_model.dart';
+import '../utils/utiles.dart';
+
 class UserInformationScreen  extends StatefulWidget {
   const UserInformationScreen ({Key? key}) : super(key: key);
 
@@ -154,6 +157,21 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
   }
   void storeData() async {
     final ap = Provider.of<AuthProvider>(context, listen: false);
+
+    UserModel userModel = UserModel(
+      name: nameController.text.trim(),
+      email: emailController.text.trim(),
+      bio: bioController.text.trim(),
+      profilePic: "",
+      createdAt: "",
+      phoneNumber: "",
+      uid: "",
+    );
+    if (image != null) {
+
+    } else {
+      showSnackBar(context, "Please upload your profile photo");
+    }
   }
 
 }
