@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:firebaseproject/provider/auth_provider.dart';
 import 'package:firebaseproject/widgets/custome_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserInformationScreen  extends StatefulWidget {
   const UserInformationScreen ({Key? key}) : super(key: key);
@@ -149,6 +151,9 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
         ),
       ),
     );
+  }
+  void storeData() async {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
   }
 
 }
