@@ -75,7 +75,7 @@ class AuthProvider extends ChangeNotifier{
          codeAutoRetrievalTimeout: ((verificationId){})
      );
    } on FirebaseAuthException catch(e){
-
+     showSnackBar(context, e.message.toString());
    }
  }
 
@@ -171,6 +171,15 @@ class AuthProvider extends ChangeNotifier{
  Future saveUserDataToSP() async {
    SharedPreferences s = await SharedPreferences.getInstance();
    await s.setString("user_model", jsonEncode(userModel.toMap()));
+ }
+
+
+ Future getDataFromSP() async {
+   SharedPreferences s = await SharedPreferences.getInstance();
+   String data = s.getString("user_model") ?? '';
+   _userModel = UserModel.fromMap(jsonDecode(data));
+   _uid = _userModel!.uid;
+   notifyListeners();
  }
 
 
