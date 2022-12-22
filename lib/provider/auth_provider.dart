@@ -124,7 +124,15 @@ class AuthProvider extends ChangeNotifier{
  }) async {
    _isLoading = true;
    notifyListeners();
-   try{} on FirebaseAuthException catch (e){
+   try{
+     // uploading image to firebase storage.
+     await storeFileToStorage("profilePic/$_uid", profilePic).then((value) {
+       userModel.profilePic = value;
+       userModel.createdAt = DateTime.now().millisecondsSinceEpoch.toString();
+       userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
+       userModel.uid = _firebaseAuth.currentUser!.phoneNumber!;
+     });
+   } on FirebaseAuthException catch (e){
      showSnackBar(context, e.message.toString());
      _isLoading = false;
      notifyListeners();
