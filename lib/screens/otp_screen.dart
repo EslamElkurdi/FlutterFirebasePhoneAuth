@@ -136,6 +136,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
   void verifyOtp(BuildContext context,String userOtp)
   {
+
     final ap = Provider.of<AuthProvider>(context, listen: false);
     ap.verifyOtp(
         context: context,
