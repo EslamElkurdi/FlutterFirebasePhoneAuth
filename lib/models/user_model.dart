@@ -16,4 +16,18 @@ class UserModel{
     required this.phoneNumber,
     required this.uid,
   });
+
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+      bio: map['bio'] ?? '',
+      uid: map['uid'] ?? '',
+      phoneNumber: map['phoneNumber'] ?? '',
+      createdAt: map['createdAt'] ?? '',
+      profilePic: map['profilePic'] ?? '',
+    );
+  }
+
+
 }
